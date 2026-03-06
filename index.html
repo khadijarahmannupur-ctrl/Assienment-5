@@ -5,8 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Issues Tracker</title>
     <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+
+    <!-- tailwind and daisyUI link -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+     <!-- google font -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+      <style>
+        *{
+            font-family: "Geist", sans-serif;
+        }
+      </style>
+
+      <!-- font awesome link -->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    
+<body class="min-h-screen max-w-md bg-base-100 shadow-xl mx-auto p-8">
+    <!-- logo and heading -->
+    <div class="text-center">
+        <img src="./assets/github-logo.png" alt="" class="mx-auto mb-6">
+        <h2 class="text-xl font-semibold text-[#1F2937]">GitHub Issues Tracker</h2>
+        <p class="text-sm text-[#64748B]">Sign in to manage your issues</p>
+    </div>
+
+    <!--login form -->
+    <div class="form">
+    <div class="card bg-base-100 w-full max-w-sm shrink-0 mx-auto">
+      <div class="card-body">
+        <fieldset class="fieldset">
+          <label class="label text-[#1F2937] text-[15px] font-medium">Username</label>
+          <input id="inputName" type="text" class="input" placeholder="Enter Username" value="admin" />
+          <label class="label text-[#1F2937] text-[15px] font-medium">Password</label>
+          <input id="inputPassword" type="password" class="input" placeholder="Enter Password" value="admin123"/>
+          <button id="login-btn" class="btn btn-primary mt-4">Sign In</button>
+        </fieldset>
+      </div>
+    </div>
+    </div>
+
+    <!-- OR divider -->
+     <div class="divider">OR</div>
+
+     <!-- Demo Credentials: -->
+      <div class="text-center">
+        <p class="text-lg text-[#64748B] mb-6">Demo Credentials:</p>
+        <p class="text-[#1F2937]"><span class="font-bold text-xl">Username:</span> admin</p>
+        <p class="text-[#1F2937]"><span class="font-bold text-xl">Username:</span> admin123</p>
+      </div>
+
+      <script src="./script/login.js"></script>
 </body>
 </html>
