@@ -2,6 +2,9 @@ const allCardContainer = document.getElementById('allCardContainer');
 const loadingSpinner = document.getElementById("loadingSpinner");
 const tabButtons = document.querySelectorAll('#tabButtons button');
 const issuesCount = document.getElementById('issuesCount');
+
+const cardDetailsModal = document.getElementById('cardDetailsModal');
+
 let allCards = [];
 
 
@@ -54,7 +57,8 @@ function displayCards(cards){
         // cardDiv.className = `${card.status === 'open' ? 'border-t-3 border-[#00A96E]' : 'border-t-3 border-[#A855F7]'}`
         cardDiv.innerHTML =`
         <div class="card bg-base-100 shadow-2xl h-full rounded-xl 
-        ${card.status === 'open' ? 'border-t-4 border-[#00A96E]' : 'border-t-4 border-[#A855F7]'}">
+        ${card.status === 'open' ?'border-t-4 border-[#00A96E]' 
+          : 'border-t-4 border-[#A855F7]'}"  onclick="openCardDetails(${card.id})">
                <div class="card-body">
                 <div class="flex justify-end">
                     <div class="badge badge-soft badge-error">${card.priority}</div>
@@ -94,7 +98,69 @@ function filterByStatus(status){
   //  console.log(filterCards)
 }
 
+// show modal hare 
+async function openCardDetails(id){
+  const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+  const data = await res.json();
+
+  cardDetailsModal.showModal();
+  // console.log(cardDetails);
+  displayCardDetails(data.data);
+}
+
+function displayCardDetails(cards){
+   const modalSection = document.getElementById('modalContent');
+   modalSection.innerHTML = '';
+
+    const cardDetails = document.createElement('div');
+    cardDetails.innerHTML = `
+    <!-- card details design -->  
+  
+            <div class="card-details">
+              <h2 class="text-[#1F2937] font-bold text-2xl mb-2">${cards.title}</h2>
+
+       <!-- title and open badge --> 
+              <div class="flex items-center gap-2">
+                <div class="badge rounded-full text-white ${cards.status === 'open' 
+                  ? 'bg-[#00A96E]' : 'bg-[#A855F7]'}">${cards.status}</div>
+                <img src="./assets/Dot.png" alt="">
+                <p class="text-sm text-[#64748B]">${cards.assignee}</p>
+                <img src="./assets/Dot.png" alt="">
+                <p class="text-sm text-[#64748B]">${cards.updatedAt}</p>
+              </div>
+
+      <!-- BUG and HELP WANTED badge -->
+              <div class="flex gap-1 mt-6">
+                <div class="badge badge-soft badge-error"><i class="fa-solid fa-bug"></i> ${cards.labels[0]}</div> 
+                <div class="badge badge-soft badge-warning"><i class="fa-regular fa-life-ring"></i> ${cards.labels[1]}</div>
+              </div>
+          <!-- description -->
+              <p class="my-6 text-[16px] text-[#64748B]">${cards.description}</p>
+
+       <!-- assignee and priority -->
+              <div class="assignee-priority flex gap-30 p-4">
+  
+                 <div class="assignee space-y-1">
+                   <p class="text-[16px] text-[#64748B]">Assignee:</p>
+                   <h4 class="text-[16px] text-[#1F2937] font-bold">${cards.assignee}</h4>
+                 </div>
+               
+                 <div class="priority">
+                   <p class="text-[16px] text-[#64748B]">Priority:</p>
+                   <div class="badge badge-error rounded-full">${cards.priority}</div>
+                 </div>
+
+              </div>
+
+            </div>
+    `
+    modalSection.appendChild(cardDetails);
+
+}
+
+
 loadCards();
+
 
 // {
 //     "id": 1,
@@ -111,3 +177,4 @@ loadCards();
 //     "createdAt": "2024-01-15T10:30:00Z",
 //     "updatedAt": "2024-01-15T10:30:00Z"
 // }
+// 
