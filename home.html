@@ -59,9 +59,9 @@
     <!-- button tab section -->
      <section class="bg-base-100 w-full md:w-11/12 mx-auto rounded-xl mt-[60px]">
         <div id="tabButtons" class="p-6">
-        <button class="btn btn-primary px-10">All</button>
-        <button class="btn px-10 border border-[#a8b8ce8f]">Open</button>
-        <button class="btn px-10 border border-[#a8b8ce8f]">Closed</button>
+        <button onclick="filterByStatus('all')" id="all" class="btn btn-primary px-10 border border-[#a8b8ce8f]">All</button>
+        <button onclick="filterByStatus('open')" id="open" class="btn px-10 border border-[#a8b8ce8f]">Open</button>
+        <button onclick="filterByStatus('closed')" id="closed" class="btn px-10 border border-[#a8b8ce8f]">Closed</button>
         </div>
      </section>
 

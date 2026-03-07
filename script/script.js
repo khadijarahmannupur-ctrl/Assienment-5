@@ -1,6 +1,7 @@
 const allCardContainer = document.getElementById('allCardContainer');
 const loadingSpinner = document.getElementById("loadingSpinner");
-const tabButtons = document.querySelectorAll('#tabButtons');
+const tabButtons = document.querySelectorAll('#tabButtons button');
+let allCards = [];
 
 
 // Loading
@@ -13,22 +14,44 @@ function hideLoading() {
 }
 
 // all buttons styles add
+tabButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+
+    tabButtons.forEach((b) => {
+       b.classList.remove('btn-primary'); 
+       b.classList.add('btn-outline'); 
+    })
+
+    btn.classList.add('btn-primary');
+    btn.classList.remove('btn-outline');
+  })
+
+})
 
 // load all cards and display
 
 async function loadCards(){
     showLoading();
+
     const res = await fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues');
     const data = await res.json();
+
+    allCards = data.data;    
+     
     hideLoading();
-    displayCards(data.data);
+    displayCards(allCards);
 }
 
 function displayCards(cards){
+    allCardContainer.innerHTML = '';
+        
     cards.forEach((card) => {
+      // console.log(card)
         const cardDiv = document.createElement('div');
+        // cardDiv.className = `${card.status === 'open' ? 'border-t-3 border-[#00A96E]' : 'border-t-3 border-[#A855F7]'}`
         cardDiv.innerHTML =`
-        <div class="card bg-base-100 shadow-2xl h-full">
+        <div class="card bg-base-100 shadow-2xl h-full rounded-xl 
+        ${card.status === 'open' ? 'border-t-4 border-[#00A96E]' : 'border-t-4 border-[#A855F7]'}">
                <div class="card-body">
                 <div class="flex justify-end">
                     <div class="badge badge-soft badge-error">${card.priority}</div>
@@ -52,6 +75,18 @@ function displayCards(cards){
         allCardContainer.appendChild(cardDiv);
     })
 } 
+
+function filterByStatus(status){
+
+   if(status === 'all'){
+    displayCards(allCards);
+    return;
+   }
+
+   const filterCards = allCards.filter((card) => card.status === status);
+   displayCards(filterCards);
+  //  console.log(filterCards)
+}
 
 loadCards();
 
