@@ -77,14 +77,17 @@ function displayCards(cards){
 } 
 
 function filterByStatus(status){
+    // showLoading()
 
    if(status === 'all'){
     displayCards(allCards);
+    // hideLoading();
     return;
    }
 
    const filterCards = allCards.filter((card) => card.status === status);
    displayCards(filterCards);
+  //  hideLoading();
   //  console.log(filterCards)
 }
 
