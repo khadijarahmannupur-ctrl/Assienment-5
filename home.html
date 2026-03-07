@@ -56,42 +56,57 @@
         </div>
     </header>
 
+    
     <!-- button tab section -->
-     <section class="bg-base-100 w-full md:w-11/12 mx-auto rounded-xl mt-[60px]">
-        <div id="tabButtons" class="p-6">
+    <section class="bg-base-100 w-full md:w-11/12 mx-auto rounded-xl mt-[60px]">
+      <div id="tabButtons" class="p-6">
         <button onclick="filterByStatus('all')" id="all" class="btn btn-primary px-10 border border-[#a8b8ce8f]">All</button>
         <button onclick="filterByStatus('open')" id="open" class="btn px-10 border border-[#a8b8ce8f]">Open</button>
         <button onclick="filterByStatus('closed')" id="closed" class="btn px-10 border border-[#a8b8ce8f]">Closed</button>
         </div>
-     </section>
+      </section>
 
-     <!-- all card container -->
+      <!-- card counter section -->
+     <section class="bg-base-100 w-full md:w-11/12 mx-auto rounded-xl mt-[60px] p-6">
+         <div class="div-right flex items-center gap-2">
+           <div class="bg-[#ECE4FF] p-2 rounded-full">
+            <img src="./assets/Aperture.png" alt="">
+           </div>
+           <div>
+            <h3 class="text-xl text-[#1F2937] font-semibold"><span id="issuesCount">0</span> Issues</h3>
+            <p class="text-sm text-[#64748B]">Track and manage your project issues</p>
+           </div>
+         </div>
+         <div class="div-left"></div>
+     </section>
+      
+      <!-- all card container -->
       <section class="bg-base-300 w-full md:w-11/12 mx-auto rounded-xl mt-[60px]">
         <!-- all card append here -->
         <div id="allCardContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-6 gap-3">
-           <!-- <div class="card bg-base-100 shadow-2xl">
-               <div class="card-body">
-                <div class="flex justify-end">
-                    <div class="badge badge-soft badge-error">High</div>
-                </div>
+          <!-- <div class="card bg-base-100 shadow-2xl">
+            <div class="card-body">
+              <div class="flex justify-end">
+                <div class="badge badge-soft badge-error">High</div>
+              </div>
               <h2 class="card-title text-[#1F2937]">Fix navigation menu on mobile devices</h2>
               <p class="text-[#64748B] line-clamp-2">The navigation menu doesn't collapse properly on mobile devices...</p>
               <div class="flex gap-1 border-b border-[#b4c5dd9d] space-y-5">
                 <div class="badge badge-soft badge-error"><i class="fa-solid fa-bug"></i> BUG</div>
-              <div class="badge badge-soft badge-warning"><i class="fa-regular fa-life-ring"></i> HELP WANTED</div>
+                <div class="badge badge-soft badge-warning"><i class="fa-regular fa-life-ring"></i> HELP WANTED</div>
               </div>
               <p class="text-sm text-[#64748B] mt-2">#1 by john_doe</p>
               <p class="text-sm text-[#64748B]">1/15/2024</p>
             </div>
         </div> -->
 
-         </div>
-
-         <!-- loading spinner -->
-          <div id="loadingSpinner" class="h-[60vh] flex justify-center items-center">
-            <span class="loading loading-dots loading-xl"></span>
-          </div>
-      </section>
+      </div>
+      
+      <!-- loading spinner -->
+      <div id="loadingSpinner" class="h-[60vh] flex justify-center items-center">
+        <span class="loading loading-dots loading-xl"></span>
+      </div>
+    </section>
     
 
       <script src="./script/script.js"></script>

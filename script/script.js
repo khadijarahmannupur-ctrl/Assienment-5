@@ -1,6 +1,7 @@
 const allCardContainer = document.getElementById('allCardContainer');
 const loadingSpinner = document.getElementById("loadingSpinner");
 const tabButtons = document.querySelectorAll('#tabButtons button');
+const issuesCount = document.getElementById('issuesCount');
 let allCards = [];
 
 
@@ -44,6 +45,8 @@ async function loadCards(){
 
 function displayCards(cards){
     allCardContainer.innerHTML = '';
+
+    issuesCount.innerHTML = `${cards.length}`;
         
     cards.forEach((card) => {
       // console.log(card)
