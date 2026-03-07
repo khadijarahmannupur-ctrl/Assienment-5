@@ -66,12 +66,12 @@ function displayCards(cards){
               <h2 class="card-title text-[#1F2937]">${card.title}</h2>
               <p class="text-[#64748B]">${card.description}</p>
               <div class="flex flex-wrap gap-2 border-b border-[#b4c5dd9d] pb-3">
-                  <div class="badge badge-soft badge-error">
-                  <i class="fa-solid fa-bug"></i> ${card.labels[0]}
+                  <div class="badge badge-soft badge-error ${!card.labels[0] ? 'hidden' : ''}">
+                  <i class="fa-solid fa-bug"></i> ${card.labels[0] || ''}
                   </div>
 
-                  <div class="badge badge-soft badge-warning">
-                    <i class="fa-regular fa-life-ring"></i> ${card.labels[1]}
+                  <div class="badge badge-soft badge-warning ${!card.labels[1] ? 'hidden' : ''}">
+                    <i class="fa-regular fa-life-ring"></i> ${card.labels[1] || ''}
                   </div>
                   </div>
               <p class="text-sm text-[#64748B] mt-2">#${card.author}</p>
@@ -131,8 +131,8 @@ function displayCardDetails(cards){
 
       <!-- BUG and HELP WANTED badge -->
               <div class="flex gap-1 mt-6">
-                <div class="badge badge-soft badge-error"><i class="fa-solid fa-bug"></i> ${cards.labels[0]}</div> 
-                <div class="badge badge-soft badge-warning"><i class="fa-regular fa-life-ring"></i> ${cards.labels[1]}</div>
+                <div class="badge badge-soft badge-error ${!cards.labels[0] ? 'hidden' : ''}"><i class="fa-solid fa-bug"></i> ${cards.labels[0] || ''}</div> 
+                <div class="badge badge-soft badge-warning ${!cards.labels[1] ? 'hidden' : ''}"><i class="fa-regular fa-life-ring"></i> ${cards.labels[1] || ''}</div>
               </div>
           <!-- description -->
               <p class="my-6 text-[16px] text-[#64748B]">${cards.description}</p>
@@ -160,6 +160,22 @@ function displayCardDetails(cards){
 
 
 loadCards();
+
+document.getElementById('searchBtn')
+.addEventListener('click', async () => {
+    const searchInput = document.getElementById('searchInput');
+    const inputValue = searchInput.value.trim().toLowerCase();
+    // console.log(inputValue);
+
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues`);
+    const data = await res.json();
+    const allCards = data.data;
+    // console.log(allCards);
+
+    const filterTitle = allCards.filter((card) => card.title.toLowerCase().includes(inputValue));
+    console.log(filterTitle);
+    displayCards(filterTitle)
+   })
 
 
 // {

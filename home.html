@@ -34,6 +34,8 @@
                  <h2 class="text-2xl font-bold text-[#1F2937] hidden sm:block">GitHub Issues Tracker</h2>
                </div>
             </div>
+
+            <!-- search input here -->
             <div class="flex gap-2">
                 <label class="input">
              <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -48,11 +50,11 @@
               <path d="m21 21-4.3-4.3"></path>
               </g>
             </svg>
-            <input type="search" required placeholder="Search issues..." />
+            <input id="searchInput" type="search" required placeholder="Search issues..." />
             </label>
 
-                    <button class="btn btn-primary">Search</button>
-                </div>
+                <button id="searchBtn" class="btn btn-primary">Search</button>
+            </div>
         </div>
     </header>
     
