@@ -34,3 +34,53 @@ Ans: Template literals are a modern way to write strings in JavaScript.
 They use backticks (``) instead of single (' ') or double (" ") quotes.
 
 They allow us to insert variables inside a string using ${}.
+
+---
+# 🐞 GitHub Issues Tracker
+
+🔗 **Live Site:** https://github-issues-tracer.netlify.app/  
+💻 **Repository:** https://github.com/khadijarahmannupur-ctrl/Assienment-5  
+
+---
+
+## 📖 Project Overview
+
+The **GitHub Issues Tracker** is a frontend web application that helps users track, manage, and explore issues from GitHub repositories.
+
+This project simulates a real-world issue tracking system where users can monitor tasks, bugs, and feature requests in an organized way. Issue tracking systems are widely used in software development to manage bugs, tasks, and collaboration among developers. :contentReference[oaicite:0]{index=0}
+
+The application focuses on clean UI, usability, and efficient data presentation.
+
+
+---
+
+## 🛠️ Technologies Used
+
+- HTML5  
+- CSS3  
+- Tailwind CSS  
+- JavaScript  
+- GitHub API  
+
+---
+
+## ✨ Key Features
+
+- 🔍 Fetch and display GitHub repository issues  
+- 📊 Track issue status (open / closed)  
+- 🏷️ Organized issue data presentation  
+- ⚡ Dynamic data loading using API  
+- 📱 Fully responsive design  
+- 🎨 Clean & modern UI  
+
+---
+
+## 📦 Dependencies
+
+This project uses:
+
+- Tailwind CSS (for styling)  
+- GitHub REST API (for fetching issue data)  
+
+---
+
